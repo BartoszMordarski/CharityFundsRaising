@@ -2,6 +2,7 @@ package com.example.charity_collection.controller;
 
 import com.example.charity_collection.dto.CollectionBoxDto;
 import com.example.charity_collection.dto.CollectionBoxInfoDto;
+import com.example.charity_collection.dto.MessageResponseDto;
 import com.example.charity_collection.service.CollectionBoxService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -30,5 +31,11 @@ public class CollectionBoxController {
     public ResponseEntity<List<CollectionBoxInfoDto>> listAllCollectionBoxes() {
         List<CollectionBoxInfoDto> collectionBoxes = collectionBoxService.listAllCollectionBoxes();
         return ResponseEntity.ok(collectionBoxes);
+    }
+
+    @DeleteMapping("/{identifier}")
+    public ResponseEntity<MessageResponseDto> unregisterCollectionBox(@PathVariable String identifier) {
+        MessageResponseDto response = collectionBoxService.unregisterCollectionBox(identifier);
+        return ResponseEntity.ok(response);
     }
 }

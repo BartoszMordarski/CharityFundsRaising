@@ -2,6 +2,7 @@ package com.example.charity_collection.service;
 
 import com.example.charity_collection.dto.CollectionBoxDto;
 import com.example.charity_collection.dto.CollectionBoxInfoDto;
+import com.example.charity_collection.dto.MessageResponseDto;
 import com.example.charity_collection.model.CollectionBox;
 import com.example.charity_collection.repository.CollectionBoxRepository;
 import org.springframework.stereotype.Service;
@@ -51,5 +52,15 @@ public class CollectionBoxService {
                         .isAssigned(collectionBox.getFundraisingEvent() != null)
                         .build())
                 .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public MessageResponseDto unregisterCollectionBox(String identifier) {
+
+        CollectionBox collectionBox = collectionBoxRepository.findByIdentifier(identifier)
+                .orElseThrow(() -> new IllegalArgumentException("Collection box not found with identifier: " + identifier));
+
+        collectionBoxRepository.delete(collectionBox);
+        return new MessageResponseDto("Collection box with identifier " + identifier + " deleted successfully");
     }
 }
