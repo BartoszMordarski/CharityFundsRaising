@@ -1,8 +1,6 @@
 package com.example.charity_collection.controller;
 
-import com.example.charity_collection.dto.CollectionBoxDto;
-import com.example.charity_collection.dto.CollectionBoxInfoDto;
-import com.example.charity_collection.dto.MessageResponseDto;
+import com.example.charity_collection.dto.*;
 import com.example.charity_collection.service.CollectionBoxService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -36,6 +34,18 @@ public class CollectionBoxController {
     @DeleteMapping("/{identifier}")
     public ResponseEntity<MessageResponseDto> unregisterCollectionBox(@PathVariable String identifier) {
         MessageResponseDto response = collectionBoxService.unregisterCollectionBox(identifier);
+        return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/assign")
+    public ResponseEntity<MessageResponseDto> assignCollectionBoxToEvent(@Valid @RequestBody AssignCollectionBoxDto assignCollectionBoxDto) {
+        MessageResponseDto response = collectionBoxService.assignCollectionBoxToEvent(assignCollectionBoxDto);
+        return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/add")
+    public ResponseEntity<MessageResponseDto> addMoneyToCollectionBox(@Valid @RequestBody AddMoneyDto addMoneyDto) {
+        MessageResponseDto response = collectionBoxService.addMoneyToCollectionBox(addMoneyDto);
         return ResponseEntity.ok(response);
     }
 }
