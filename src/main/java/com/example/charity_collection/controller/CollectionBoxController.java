@@ -31,7 +31,7 @@ public class CollectionBoxController {
         return ResponseEntity.ok(collectionBoxes);
     }
 
-    @DeleteMapping("/{identifier}")
+    @DeleteMapping("/delete/{identifier}")
     public ResponseEntity<MessageResponseDto> unregisterCollectionBox(@PathVariable String identifier) {
         MessageResponseDto response = collectionBoxService.unregisterCollectionBox(identifier);
         return ResponseEntity.ok(response);
@@ -46,6 +46,12 @@ public class CollectionBoxController {
     @PostMapping("/add")
     public ResponseEntity<MessageResponseDto> addMoneyToCollectionBox(@Valid @RequestBody AddMoneyDto addMoneyDto) {
         MessageResponseDto response = collectionBoxService.addMoneyToCollectionBox(addMoneyDto);
+        return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/empty/{identifier}")
+    public ResponseEntity<MessageResponseDto> emptyCollectionBox(@PathVariable String identifier) {
+        MessageResponseDto response = collectionBoxService.emptyCollectionBox(identifier);
         return ResponseEntity.ok(response);
     }
 }
