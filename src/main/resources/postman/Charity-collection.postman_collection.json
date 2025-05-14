@@ -1,0 +1,319 @@
+{
+	"info": {
+		"_postman_id": "137d0c6a-dc81-40cb-b621-868e1892c5b0",
+		"name": "Charity-collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34111502"
+	},
+	"item": [
+		{
+			"name": "addEvent",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Charity One\",\r\n    \"description\": \"Annual charity fundraiser\",\r\n    \"startDate\": \"2025-01-11\",\r\n    \"endDate\": \"2025-01-14\",\r\n    \"currencyCode\": \"PLN\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/fundraising-events",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"fundraising-events"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registerBox",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"identifier\": \"BOXORG1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/collection-boxes",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"collection-boxes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listAllBoxes",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"identifier\": \"BOXORG1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/collection-boxes",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"collection-boxes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "report",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"identifier\": \"BOXORG1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/reports/financial",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"reports",
+						"financial"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteBox",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"identifier\": \"BOXORG1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/collection-boxes/delete/BOXORG2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"collection-boxes",
+						"delete",
+						"BOXORG2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "assignBox",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"collectionBoxIdentifier\": \"BOXORG2\",\r\n    \"fundraisingEventId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/collection-boxes/assign",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"collection-boxes",
+						"assign"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addMoney",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"collectionBoxIdentifier\": \"BOXORG2\",\r\n  \"amount\": 25,\r\n  \"currencyCode\": \"USD\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/collection-boxes/add",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"collection-boxes",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateExchange",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"collectionBoxIdentifier\": \"BOXORG2\",\r\n    \"fundraisingEventId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/exchange-rates/update",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"exchange-rates",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "emptyBox",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"collectionBoxIdentifier\": \"BOXORG2\",\r\n    \"fundraisingEventId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/collection-boxes/empty/BOXORG2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"collection-boxes",
+						"empty",
+						"BOXORG2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "nbpapitest",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"collectionBoxIdentifier\": \"BOXORG2\",\r\n    \"fundraisingEventId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.nbp.pl/api/exchangerates/tables/a/today/?format=json",
+					"protocol": "https",
+					"host": [
+						"api",
+						"nbp",
+						"pl"
+					],
+					"path": [
+						"api",
+						"exchangerates",
+						"tables",
+						"a",
+						"today",
+						""
+					],
+					"query": [
+						{
+							"key": "format",
+							"value": "json"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

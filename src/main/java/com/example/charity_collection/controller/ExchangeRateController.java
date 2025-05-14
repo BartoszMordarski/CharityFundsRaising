@@ -19,7 +19,7 @@ public class ExchangeRateController {
 
     @PostMapping("/update")
     public ResponseEntity<MessageResponseDto> updateExchangeRates() {
-        exchangeRateService.manuallyUpdateExchangeRates();
+        exchangeRateService.updateExchangeRates();
         return ResponseEntity.ok(new MessageResponseDto("Exchange rated updated successfully"));
     }
 }
