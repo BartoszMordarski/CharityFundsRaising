@@ -116,7 +116,7 @@ Rates are:
 ```bash
 # Clone the repository
 git clone https://github.com/BartoszMordarski/CharityFundsRaising.git
-cd charity-collection
+cd CharityFundsRaising
 
 # Build and run the application
 mvn spring-boot:run
