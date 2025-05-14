@@ -123,10 +123,6 @@ public class ExchangeRateService {
         }
     }
 
-    public void manuallyUpdateExchangeRates() {
-        updateExchangeRates();
-    }
-
 }
 
 
