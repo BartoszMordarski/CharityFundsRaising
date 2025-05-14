@@ -139,7 +139,8 @@ mvn spring-boot:run
 | POST | `/api/exchange-rates/update` | Manually update exchange rates |
 
 ---
-
+## ⚠️ Postman Collection
+Collection file with all the requests ready to import to Postman is available at src/main/resources/postman
 ## Sample Queries
 
 ### 1. Create a Fundraising Event
@@ -157,6 +158,18 @@ mvn spring-boot:run
   "currencyCode": "PLN"
 }
 ```
+**Response body:**
+```json
+{
+    "id": 1,
+    "name": "Charity One",
+    "description": "Annual charity fundraiser",
+    "startDate": "2025-01-11",
+    "endDate": "2025-01-14",
+    "currencyCode": "PLN",
+    "accountBalance": 0
+}
+```
 
 
 ### 2. Register a Collection Box
@@ -170,6 +183,14 @@ mvn spring-boot:run
   "identifier": "BOX001"
 }
 ```
+**Response body:**
+```json
+{
+    "id": 1,
+    "identifier": "BOX001",
+    "isEmpty": true
+}
+```
 
 
 ### 3. List All Collection Boxes
@@ -177,12 +198,35 @@ mvn spring-boot:run
 **Request type:** GET  
 **Endpoint:** `http://localhost:8080/api/collection-boxes`  
 
+**Response body:**
+```json
+[
+    {
+        "id": 1,
+        "identifier": "BOX001",
+        "empty": true,
+        "assigned": false
+    },
+    {
+        "id": 2,
+        "identifier": "BOX002",
+        "empty": true,
+        "assigned": false
+    }
+]
+```
 
 ### 4. Unregister a Collection Box
 
 **Request type:** DELETE  
-**Endpoint:** `http://localhost:8080/api/collection-boxes/delete/BOX001`  
+**Endpoint:** `http://localhost:8080/api/collection-boxes/delete/BOX002`  
 
+**Response body:**
+```json
+{
+    "message": "Collection box with identifier BOX002 deleted successfully"
+}
+```
 
 ### 5. Assign a Box to a Fundraising Event
 
@@ -197,6 +241,13 @@ mvn spring-boot:run
 }
 ```
 
+**Response body:**
+```json
+{
+    "message": "Collection box with identifier BOX001 successfully assigned to event Charity One"
+}
+```
+
 
 ### 6. Add Money to a Collection Box
 
@@ -207,29 +258,56 @@ mvn spring-boot:run
 ```json
 {
   "collectionBoxIdentifier": "BOX001",
-  "amount": 100.50,
-  "currencyCode": "PLN"
+  "amount": 25,
+  "currencyCode": "USD"
 }
 ```
-
+**Response body:**
+```json
+{
+    "message": "Amount 25 USD added to collection box with identifier BOX001"
+}
+```
 
 ### 7. Empty a Collection Box
 
 **Request type:** POST  
 **Endpoint:** `http://localhost:8080/api/collection-boxes/empty/BOX001`  
 
+**Response body:**
+```json
+{
+    "message": "Collection box with identifier BOX001 has been emptied. Amount 94.44 PLN has been transfered to Charity One"
+}
+```
 
 ### 8. Generate a Financial Report
 
 **Request type:** GET  
 **Endpoint:** `http://localhost:8080/api/reports/financial`  
 
+**Response body:**
+```json
+[
+    {
+        "eventName": "Charity One",
+        "amount": 94.44,
+        "currency": "PLN"
+    }
+]
+```
 
 ### 9. Manually Update Exchange Rates
 
 **Request type:** POST  
-**Endpoint:** `http://localhost:8080/api/exchange-rates/update`  
+**Endpoint:** `http://localhost:8080/api/exchange-rates/update` 
 
+**Response body:**
+```json
+{
+    "message": "Exchange rated updated successfully"
+}
+```
 ---
 
 ## Testing
